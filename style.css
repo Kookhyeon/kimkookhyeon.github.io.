@@ -138,7 +138,9 @@ a {
 button{
     width: 50px;
     height: 20px;
-    margin: 0 0 10px 1170px;
+    position: absolute;
+    left: 95%;
+    top: -30%;
     font-size: 15px;
 }
 hr{
