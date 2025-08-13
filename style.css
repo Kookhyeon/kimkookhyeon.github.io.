@@ -94,8 +94,8 @@ a { text-decoration: none; color: inherit; }
 /* Add 버튼: 카드 우상단에 고정(카드 내부 기준) */
 button.b1 {
   position: absolute; 
-  top: -40px; 
-  right: 0px;
+  top: -40%; 
+  right: 0%;
   width: auto;
   height: auto;
   padding: 6px 10px;
@@ -123,17 +123,17 @@ hr{
   .firstContract,
   .secondContract {
     grid-template-columns: 64px 1fr; /* 이미지 + 내용 두 열만 */
-    grid-template-rows: auto auto auto; /* 제목, 배지, 가격(아래로) */
+    grid-template-rows: auto auto auto auto; /* 제목, 배지, 가격(아래로) */
     gap: 8px 12px;
   }
 
   .p1, .p5 {
-    grid-column: 2;
+    grid-column: 2 /span 3;
     grid-row: 1;
   }
 
-  .p2, .p6 { grid-column: 2; grid-row: 2; justify-self: start; margin-right: 8px; }
-  .p3, .p7 { grid-column: 2; grid-row: 2; justify-self: start; margin-left: 100px; }
+  .p2, .p6 { grid-column: 2; grid-row: 2; justify-self: end; align-self: center; }
+  .p3, .p7 { grid-column: 2; grid-row: 3; justify-self: start; align-self: center; }
   /* 위 두 줄이 겹친다면 → 더 안전하게 배지들을 한 줄로 감싸고 싶으면 아래처럼 바꾸세요: 
      둘 다 grid-row:2; grid-column:2; 로 두고 margin으로 간격 주기
   */
@@ -141,7 +141,7 @@ hr{
 
   .p4, .p8 {
     grid-column: 2; 
-    grid-row: 3; 
+    grid-row: 4; 
     justify-self: end; 
     align-self: center;
   }
