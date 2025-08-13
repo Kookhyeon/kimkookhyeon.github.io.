@@ -38,7 +38,7 @@ h2 {
   background: #fff;
 
   display: grid;
-  grid-template-columns: 72px 1fr 1fr auto; /* 이미지 / 텍스트1 / 텍스트2(배지 자리) / 가격 */
+  grid-template-columns: 72px 130px auto 110px; /* 이미지 / 텍스트1 / 텍스트2(배지 자리) / 가격 */
   grid-template-rows: auto auto;            /* 1행: 제목, 2행: 배지 */
   gap: 10px 16px;
   align-items: center; /*세로 중앙 배치 */
@@ -78,8 +78,8 @@ a { text-decoration: none; color: inherit; }
   text-align: center;
   white-space: nowrap;
 }
-.p2, .p6 { grid-column: 2 / span 2; justify-self: start; }
-.p3, .p7 { grid-column: 2 / span 2;  }
+.p2, .p6 { grid-column: 2; justify-self: start; }
+.p3, .p7 { grid-column: 3; justify-self: start;}
 
 /* 가격(.p4, .p8) → 항상 카드의 우측 영역 중앙정렬 */
 .p4, .p8 {
@@ -87,7 +87,7 @@ a { text-decoration: none; color: inherit; }
   grid-row: 1 / span 2;  /* 세로 가운데에 오도록 두 행 차지 */
   margin: 0;
   font-size: clamp(14px, 2vw, 16px);
-  justify-self: end; /*그리드 가로방향 끝으로 붙임*/
+  justify-self: start; /*그리드 가로방향 끝으로 붙임*/
   align-self: center; /*세로 방향에서 가운데에 둠*/
 }
 
