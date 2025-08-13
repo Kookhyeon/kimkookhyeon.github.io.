@@ -164,8 +164,8 @@ hr{
   }
 
   button.b1 {
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
+    background: #fff;
+    border-radius: 8px;
     top: -35px;
     right: 0px;
     font-size: 13px;
