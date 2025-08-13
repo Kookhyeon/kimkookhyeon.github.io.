@@ -79,7 +79,7 @@ a { text-decoration: none; color: inherit; }
   white-space: nowrap;
 }
 .p2, .p6 { grid-column: 2 / span 3; justify-self: start; }
-.p3, .p7 { grid-column: 2 / span 3; justify-self: center; }
+.p3, .p7 { grid-column: 2 / span 3; }
 
 /* 가격(.p4, .p8) → 항상 카드의 우측 영역 중앙정렬 */
 .p4, .p8 {
