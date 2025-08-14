@@ -45,7 +45,8 @@ h2 {
 }
 
 .contacted1,
-.contacted2 {
+.contacted2,
+.contacted3 {
   /* 절대배치 제거 → 일반 흐름으로 안정 배치 */
   position: relative;
   width: min(900px, 90%);
