@@ -26,8 +26,8 @@ h2 {
 /* ===== 카드 공통 레이아웃 (Grid) =====
    구조: [이미지] [텍스트 2열(제목/배지)] [가격]  (+우상단 Add 버튼)
 */
-.firstContract,
-.secondContract {
+.contracted1,
+.contracted2 {
   /* 절대배치 제거 → 일반 흐름으로 안정 배치 */
   position: relative;
   width: min(900px, 90%);
@@ -42,81 +42,6 @@ h2 {
   grid-template-rows: auto auto;            /* 1행: 제목, 2행: 배지 */
   gap: 10px 16px;
   align-items: center; /*세로 중앙 배치 */
-}
-
-/* 이미지(왼쪽 고정) */
-.firstContract img,
-.secondContract img {
-  grid-column: 1;
-  grid-row: 1 / span 2; /* 두 행에 걸치게 */
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
-}
-
-/* 제목(이름 + 점수) → 1행, 2열 쪽 */
-.p1, .p5 {
-  grid-column: 2 / span 2;  /* 제목을 텍스트 영역 전체로 */
-  grid-row: 1;
-  margin: 0;
-  font-size: clamp(16px, 2.2vw, 20px);
-  font-weight: 700; /*글자 굵기: 400=기본, 700=굴게*/
-}
-a { text-decoration: none; color: inherit; }
-a:hover { color: blue;}
-
-/* 배지 2개(.p2, .p3 / .p6, .p7)를 가로로 나란히 */
-.p2, .p3, .p6, .p7 {
-  grid-row: 2;
-  height: 24px;
-  line-height: 24px;
-  padding: 0 10px;
-  border: 0.5px solid #000;
-  border-radius: 10px;
-  font-size: 11px;
-  text-align: center;
-  white-space: nowrap;
-}
-.p2, .p6 { grid-column: 2; justify-self: start; }
-.p3, .p7 { grid-column: 3; justify-self: start;}
-
-/* 가격(.p4, .p8) → 항상 카드의 우측 영역 중앙정렬 */
-.p4, .p8 {
-  grid-column: 4;
-  grid-row: 1 / span 2;  /* 세로 가운데에 오도록 두 행 차지 */
-  margin: 0;
-  font-size: clamp(14px, 2vw, 16px);
-  justify-self: start; /*그리드 가로방향 끝으로 붙임*/
-  align-self: center; /*세로 방향에서 가운데에 둠*/
-}
-
-/* Add 버튼: 카드 우상단에 고정(카드 내부 기준) */
-button.b1 {
-  position: absolute; 
-  top: -40%; 
-  right: 0%;
-  width: auto;
-  height: auto;
-  padding: 6px 10px;
-  margin: 0;
-  font-size: 14px;
-  line-height: 1;
-  border: 1px solid #111;
-  border-radius: 8px;
-  background: #f3f3f3;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-/* 구분선 */
-hr{
-  border: none;
-  height: 2px;
-  background-color: black;
-  width: 80%;
-  margin: 20px auto;
 }
 
 .contacted1,
@@ -180,6 +105,19 @@ hr{
   font-size: clamp(14px, 2vw, 16px);
   justify-self: start; /*그리드 가로방향 끝으로 붙임*/
   align-self: center; /*세로 방향에서 가운데에 둠*/
+}
+
+/*링크 텍스트*/
+a { text-decoration: none; color: inherit; }
+a:hover { color: blue;}
+
+/* 구분선 */
+hr{
+  border: none;
+  height: 2px;
+  background-color: black;
+  width: 80%;
+  margin: 20px auto;
 }
 
 /* ===== 반응형(좁은 화면) ===== */
