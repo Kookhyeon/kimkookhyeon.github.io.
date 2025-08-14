@@ -100,25 +100,23 @@ h2 {
 .badge2 { grid-column: 3; justify-self: start; }
 
 .cost,
-.cost1,
-.cost2,
-.cost3 {
+.cost1 {
   grid-column: 4;
   grid-row: 1 / span 2;  /* 세로 가운데에 오도록 두 행 차지 */
   margin: 0;
   font-size: clamp(14px, 2vw, 16px);
   justify-self: start; /*그리드 가로방향 끝으로 붙임*/
   align-self: center; /*세로 방향에서 가운데에 둠*/
+
+  cursor: pointer;
 }
 
 /*링크 텍스트*/
 a { text-decoration: none; color: inherit; }
-a:hover { color: blue;}
 
-.cost,
-.cost1 {
-  cursor: pointer;
-}
+.cost:hover,
+.cost1:hover,
+a:hover { color: blue;}
 
 /* 구분선 */
 hr{
@@ -179,11 +177,13 @@ hr{
   .badge1 { margin: 0 5px 0; grid-column: 2; grid-row: 2; justify-self: start; align-self: end; }
   .badge2 { margin: 0 5px 0; grid-column: 2; grid-row: 3; justify-self: start; align-self: start; }
  
-  .cost {
+  .cost,
+  .cost1 {
     grid-column: 3; 
     grid-row: 1 / span 3; 
     justify-self: end; 
     align-self: center;
+     font-size: clamp(12px, 2vw, 16px);
   }
   
 }
