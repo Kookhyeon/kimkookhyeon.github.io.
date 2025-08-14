@@ -1,5 +1,5 @@
 const costs = document.querySelectorAll(".cost");
-const consts1 = document.querySelector(".cost1");
+const items = document.querySelectorAll(".cost1");
 
 costs.forEach((cost)=> {
     cost.addEventListener("click", ()=>{
@@ -17,16 +17,12 @@ costs.forEach((cost)=> {
 
     });
 
-// consts1.forEach((cost1)=> {
-//     cost1.addEventListener("click", ()=> {
-//         const html1 = cost1.innerHTML.replace(/\s+/g, "").replace("<br>", "<br/>");
-//         const original = html1;
-//         const alt = cost1.dataset.alt;
+items.forEach((el)=> {
+    const original = el.innerHTML;
+    const alt = el.dataset.alt;     
+    
+    el.addEventListener("click", ()=> {
 
-//         if(original === "cost: not<br/>specified") {
-//             cost.innerHTML = alt;
-//         } else {
-//             cost.innerHTML = original;
-//         }
-//     });
-// });
+        el.innerHTML = (el.innerHTML === original) ? alt : original;
+   });
+ });
