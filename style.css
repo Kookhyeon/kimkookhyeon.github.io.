@@ -99,7 +99,10 @@ h2 {
 .badge1 { grid-column: 2; justify-self: start; }
 .badge2 { grid-column: 3; justify-self: start; }
 
-.cost {
+.cost,
+.cost1,
+.cost2,
+.cost3 {
   grid-column: 4;
   grid-row: 1 / span 2;  /* 세로 가운데에 오도록 두 행 차지 */
   margin: 0;
@@ -111,6 +114,11 @@ h2 {
 /*링크 텍스트*/
 a { text-decoration: none; color: inherit; }
 a:hover { color: blue;}
+
+.cost,
+.cost1 {
+  cursor: pointer;
+}
 
 /* 구분선 */
 hr{
