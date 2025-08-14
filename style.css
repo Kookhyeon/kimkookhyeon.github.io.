@@ -65,6 +65,7 @@ h2 {
   font-weight: 700; /*글자 굵기: 400=기본, 700=굴게*/
 }
 a { text-decoration: none; color: inherit; }
+a:hover { color: blue;}
 
 /* 배지 2개(.p2, .p3 / .p6, .p7)를 가로로 나란히 */
 .p2, .p3, .p6, .p7 {
@@ -116,6 +117,69 @@ hr{
   background-color: black;
   width: 80%;
   margin: 20px auto;
+}
+
+.contacted1,
+.contacted2 {
+  /* 절대배치 제거 → 일반 흐름으로 안정 배치 */
+  position: relative;
+  width: min(900px, 90%);
+  margin: 16px auto;              /* 가로 중앙 */
+  padding: 16px 20px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background: #fff;
+
+  display: grid;
+  grid-template-columns: 72px 130px auto 110px; /* 이미지 / 텍스트1 / 텍스트2(배지 자리) / 가격 */
+  grid-template-rows: auto auto;            /* 1행: 제목, 2행: 배지 */
+  gap: 10px 16px;
+  align-items: center; /*세로 중앙 배치 */
+}
+
+.profile,
+.profile img {
+  grid-column: 1;
+  grid-row: 1 / span 2; /*두 행에 걸치게 */
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.title{
+  grid-column: 2 / span 2;  /* 제목을 텍스트 영역 전체로 */
+  grid-row: 1;
+  margin: 0;
+  font-size: clamp(16px, 2.2vw, 20px);
+  font-weight: 700; /*글자 굵기: 400=기본, 700=굴게*/
+}
+
+.badge1,
+.badge2 {
+  grid-row: 2;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 10px;
+  border: 0.5px solid #000;
+  border-radius: 10px;
+  font-size: 11px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.badge1 { grid-column: 2; justify-self: start; }
+.badge2 { grid-column: 3; justify-self: start; }
+
+.cost {
+  grid-column: 4;
+  grid-row: 1 / span 2;  /* 세로 가운데에 오도록 두 행 차지 */
+  margin: 0;
+  font-size: clamp(14px, 2vw, 16px);
+  justify-self: start; /*그리드 가로방향 끝으로 붙임*/
+  align-self: center; /*세로 방향에서 가운데에 둠*/
 }
 
 /* ===== 반응형(좁은 화면) ===== */
@@ -171,4 +235,40 @@ hr{
     font-size: 13px;
     padding: 5px 9px;
   }
+
+  .contacted1,
+  .contacted2 {
+        grid-template-columns: 64px auto auto; /* 이미지 + 내용 두 열만 */
+    grid-template-rows: auto 1fr 1fr; /* 제목, 배지, 가격(아래로) */
+    gap: 8px 12px;
+  }
+
+  .profile,
+  .profile img {
+      grid-column: 1;
+  grid-row: 1 / span 3; /* 두 행에 걸치게 */
+  width: 64px;
+  height: 64px;
+  align-self: center;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  }
+
+  .title {
+    grid-column: 2 /span 3;
+    grid-row: 1;
+    align-self: end;
+  }
+
+  .badge1 { margin: 0 5px 0; grid-column: 2; grid-row: 2; justify-self: start; align-self: end; }
+  .badge2 { margin: 0 5px 0; grid-column: 2; grid-row: 3; justify-self: start; align-self: start; }
+ 
+  .cost {
+    grid-column: 3; 
+    grid-row: 1 / span 3; 
+    justify-self: end; 
+    align-self: center;
+  }
+  
 }
