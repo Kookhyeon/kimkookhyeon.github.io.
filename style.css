@@ -123,7 +123,7 @@ hr{
   border: none;
   height: 2px;
   background-color: black;
-  width: 80%;
+  width: 65%;
   margin: 20px auto;
 }
 
@@ -183,7 +183,7 @@ hr{
     grid-row: 1 / span 3; 
     justify-self: end; 
     align-self: center;
-     font-size: clamp(12px, 2vw, 16px);
+    font-size: clamp(12px, 2vw, 16px);
   }
   
 }
