@@ -127,6 +127,24 @@ hr{
   margin: 20px auto;
 }
 
+/* Add 버튼: 카드 우상단에 고정(카드 내부 기준) */
+.b {
+  position: absolute; 
+  top: -40%; 
+  right: 0%;
+  width: auto;
+  height: auto;
+  padding: 6px 10px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1;
+  border: 1px solid #111;
+  border-radius: 8px;
+  background: #f3f3f3;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
 /* ===== 반응형(좁은 화면) ===== */
 @media (max-width: 600px) {
   .contracted1,
@@ -140,7 +158,7 @@ hr{
     margin: 10px auto 40px;
   }
 
-  button.b1 {
+  .b {
     background: #fff;
     border-radius: 8px;
     top: -35px;
