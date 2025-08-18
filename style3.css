@@ -1,0 +1,244 @@
+/* ===== Option A: Minimal Stripe Cards ===== */
+/* :root{} 는 문서 최상위 요소를 가리키는 선택자로 전역변수를 선언할 때 쓰이는 게 관례*/
+:root{
+  --bg:#f7f8fb; --panel:#fff; --text:#0f172a; --muted:#64748b; --border:#e6eaf0;
+  --brand:#2563eb; --good:#10b981; --shadow:0 10px 18px rgba(2,6,23,.06);
+  --radius:18px;
+}
+
+/* *=>전체 선택자(universal selector)로 html 모든 요소를 선택*/
+/*border-box는 padding, border 지정을 해도 상자 크기가 바뀌지 않고 그 안의 콘텐츠의 크기가 바뀌게 한다*/
+/*box-sizing의 기본값은 content-box로 상자의 크기가 바뀐다.*/
+*{box-sizing:border-box}
+
+html,body{height:100%} /*html 전체 페이지 높이를 브라우저 창 전체높이(100%)로 맞춤*/
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.45
+}
+
+h1{
+  font-weight:900;
+  letter-spacing:.2px;
+  font-size:clamp(24px,3.3vw,36px);
+  max-width:1100px;
+  margin:28px auto 10px;
+  padding:0 16px
+}
+
+h2{
+  font-size:clamp(18px,2.2vw,22px);
+  margin:10px 0 16px
+}
+
+.signed,
+.contacted{ max-width:1100px;margin:0 auto 28px;padding:0 16px; }
+
+hr{ display:none }
+
+/* Card */
+.signed>[class^="contracted"], /*signed 클래스 안 contracted로 시작하는 요소만 선택해서 스타일 적용*/
+.contacted>[class^="contacted"] {
+  position:relative;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:16px 16px 14px;
+  margin-bottom:14px;
+  display:grid;
+  grid-template-columns:72px auto 100px;
+  grid-template-rows:auto auto;
+  gap:10px 14px;
+  align-items:center;
+  transition: transform .12s ease, box-shadow .12s ease; /*hover로 인해 상태가 변할때 뚝 끊기지 않고 부드럽게 전환해주는 명령어; */
+  /* transform 은 카드가 부드럽게 올라가고 내려옴, box-shadow 는 그림자가 부드럽게 퍼지는 효과*/
+  }
+
+.signed>[class^="contracted"]::before,
+.contacted>[class^="contacted"]::before{
+  content:""; /*  ::before 이나 ::after 를 쓸 떄 항상 들어가는 구문, "" =>실제 텍스트는 넣지 않고, 빈 요소만 생성;*/
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:6px;
+  border-radius: 18px 0 0 18px;
+}
+
+/*각 크레이터 카드 왼쪽끝에 그라에이션 스타일 추가*/
+.signed>[class^="contracted"]::before{
+  background:linear-gradient(180deg,#3b82f6,#60a5fa) 
+}
+
+/*각 크레이터 카드 왼쪽끝에 그라에이션 스타일 추가*/
+.contacted>[class^="contacted"]::before{
+  background:linear-gradient(180deg,#0ea5e9,#22d3ee)
+}
+
+.signed>[class^="contracted"]:hover,
+.contacted>[class^="contacted"]:hover{
+  transform:translate(2px, -2px); /*마우스르 갔다 대면 카드가 translate() 안 좌표만큼 떠오름;*/ 
+  box-shadow:0 14px 24px rgba(2,6,23,.08),0 3px 10px rgba(2,6,23,.05) /* 마우스를 갔다 댈때 그림자가 생김*/
+} 
+
+.title {grid-column:2/3; /*gird-column: 2 / span 1;과 같은 의미, 2/3은 시작 경계선과 끝 경계선 의미, 2 / span 1;은 두번째 경계선에서 시작하여 span (칸 개수) 를 의미; */
+  grid-row:1;
+  font-weight:800
+}
+
+.title a {
+  color:var(--text);
+  text-decoration:none
+}
+
+.title a:hover {
+  color:var(--brand);
+  text-decoration:underline;
+  text-underline-offset:3px
+}
+
+.profile {
+  grid-column:1/2;
+  grid-row:1 / span 2;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+
+.profile img {
+  width:64px;
+  height:64px;
+  /* border-radius:14px; */
+  object-fit:cover;
+  /* border:1px solid var(--border) */
+}
+
+.badge1 {
+  grid-column:2/3;
+  grid-row:2;
+  display:inline-flex;
+  align-items:center;
+  justify-self: start;
+  font-size:13px;
+  justify-content: center;
+  padding:8px 14px;
+  border-radius:999px;
+  margin:0;
+  border:1px solid #e2e8f0;
+  background:#f1f5f9 
+}
+
+.badge2 {
+  grid-column:2/3;
+  grid-row:2;
+  display:inline-flex;
+  align-items:center;
+  justify-content: center;
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:999px;
+  margin-left:10px;
+  border:1px solid #e2e8f0;
+  background:#f1f5f9 
+}
+
+.badge1 { background:#eef4ff; color:#1e40af; border-color:#dbe3ff }
+.badge2 { background:#ecfdf5; color:#065f46; border-color:#c7f3e3 }
+
+.cost,
+.cost1 {
+  grid-column:3/4;
+  grid-row:1 / span 2;
+  justify-self:end;
+  align-self:center;
+  font:600 12px/1.1 "Intel One Mono",ui-monospace,Menlo,monospace;
+  padding:10px 12px 8px;
+  border-radius:12px;
+  background:#f8fafc;
+  border:1px dashed #cbd5e1;
+  min-width:88px;
+  text-align:center;
+  white-space:nowrap
+}
+
+.b {
+  position:absolute;
+  top:10px;
+  right:10px;
+  appearance:none;border:
+  1px solid #d0d7e2;
+  background:#fff;
+  color:#0b1220;
+  padding:6px 10px;
+  font-size:12px;
+  font-weight:600;
+  border-radius:10px;
+  cursor:pointer
+}
+
+.b:hover { background:#f6f8fb }
+
+.cost:hover,
+.cost1:hover {
+    cursor: pointer;
+}
+
+/* ===== 반응형(좁은 화면) ===== */
+@media (max-width: 600px) {
+
+  h1{
+    border:1px none;
+    width: 100%;
+    /* background-color: ; */
+    font-weight:900;
+    letter-spacing:.2px;
+    font-size:35px;
+    max-width:1100px;
+    margin:15px auto 20px;
+    padding:0 16px
+  }
+
+ .signed>[class^="contracted"],
+ .contacted>[class^="contacted"] {
+    grid-template-columns: 64px auto auto; /* 이미지 + 내용 두 열만 */
+    grid-template-rows: auto auto; /* 제목, 배지, 가격(아래로) */
+    gap: 8px 12px;
+  }
+
+  .profile,
+  .profile img {
+    grid-column: 1;
+    grid-row: 1 / span 3; /* 두 행에 걸치게 */
+    width: 64px;
+    height: 64px;
+    align-self: center;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .title {
+    grid-column: 2 /span 2;
+    grid-row: 1;
+
+    align-self: center;
+  }
+
+  .badge1 { margin: 2px 5px; grid-column: 2; grid-row: 2; font-size: clamp(12px, 2vw, 16px); justify-self: start; align-self: start; }
+  .badge2 { margin: 2px 5px; grid-column: 2; grid-row: 2; font-size: clamp(12px, 2vw, 16px); justify-self: start; align-self: start; }
+ 
+  .cost,
+  .cost1 {
+    grid-column: 3; 
+    grid-row: 1 / span 3; 
+    justify-self: end; 
+    align-self: center;
+    font-size: clamp(12px, 2vw, 16px);
+  }
+  
+}

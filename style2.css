@@ -1,0 +1,204 @@
+/* ====== Base / Theme ====== */
+:root{
+  --bg: #fafbfc;
+  --panel: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e5e7eb;
+  --brand: #2563eb;         /* Craft-ish blue */
+  --accent: #10b981;        /* green for "Intro" */
+  --warning: #f59e0b;       /* amber (optional) */
+  --chip-bg: #f1f5f9;
+  --shadow: 0 10px 20px rgba(2,6,23,.06), 0 2px 6px rgba(2,6,23,.04);
+  --radius: 18px;
+}
+
+/* *=> 전체 선택자(universal selector)로 html안 모든요소에 적용*/
+*{ box-sizing:border-box; } /*border-box를 지정하면 padding이나 border를 넣어도 박스크기는 바뀌지 않고 안에 콘텐츠의 크기가 바뀜; 이걸 지정안하면 conte-box
+html,body{ height:100%; } /* html 전체 페이지 높이를 브라우저 창 전체 높이(100%)로 설정;*/
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Noto Sans KR", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height:1.45;
+  letter-spacing:.1px;
+}
+
+/* ====== Headings ====== */
+h1{
+  font-family: "Archivo Black", ui-sans-serif, "Noto Sans KR", sans-serif;
+  font-size: clamp(24px, 3.5vw, 36px);
+  margin: 28px auto 10px;
+  max-width: 1100px;
+  padding: 0 16px;
+}
+h2{
+  font-size: clamp(18px, 2.2vw, 22px);
+  margin: 8px 0 16px;
+  letter-spacing:.2px;
+}
+
+/* ====== Sections ====== */
+.signed, .contacted{
+  max-width:1100px;
+  margin: 0 auto 28px;
+  padding: 20px 16px 8px;
+  background: transparent;
+}
+
+/* Grid for cards (mobile: 1col -> desktop: 2col) */
+.signed > [class^="contracted"],
+.contacted > [class^="contacted"]{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 16px;
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 10px 14px;
+  align-items: center;
+  position: relative;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  margin-bottom: 14px;
+}
+
+/* hover lift */
+.signed > [class^="contracted"]:hover,
+.contacted > [class^="contacted"]:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px rgba(2,6,23,.08), 0 3px 10px rgba(2,6,23,.05);
+  border-color:#dbe3ef;
+}
+
+/* Title & link */
+.title{
+  grid-column: 2 / 3;
+  grid-row: 1;
+  font-weight: 700;
+  letter-spacing:.2px;
+}
+.title a{
+  color: var(--text);
+  text-decoration: none;
+}
+.title a:hover{
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Profile image */
+.profile{
+  grid-column: 1 / 2;
+  grid-row: 1 / span 2;
+  display:flex; align-items:center; justify-content:center;
+}
+.profile img{
+  width: 64px; height: 64px;
+  border-radius: 14px;             /* square-rounded avatar */
+  object-fit: cover;
+  border:1px solid var(--border);
+}
+
+/* Badges (chips) */
+.badge1, .badge2{
+  grid-column: 2 / 4;
+  grid-row: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: #0b1220;
+  border: 1px solid #e2e8f0;
+  margin-right: 8px;
+}
+
+/* Differentiate badges by role */
+.badge1{ background: #eef4ff; color:#1e40af; border-color:#dbe3ff; } /* primary */
+.badge2{ background: #ecfdf5; color:#065f46; border-color:#c7f3e3; } /* success */
+
+/* Cost pill (works for .cost and .cost1) */
+.cost, .cost1{
+  grid-column: 3 / 4;
+  grid-row: 1;
+  justify-self: end;
+  align-self: start;
+  font-family: "Intel One Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height:1.1;
+  padding: 10px 12px 8px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border:1px dashed #cbd5e1;
+  color:#0f172a;
+  text-align:right;
+  min-width: 88px;
+  white-space: nowrap;
+}
+
+/* "Add" ghost button (only where present) */
+.b{
+  position: absolute;
+  top: 10px; right: 10px;
+  appearance:none;
+  border:1px solid #d0d7e2;
+  background:#fff;
+  color:#0b1220;
+  padding:6px 10px;
+  font-size:12px; font-weight:600;
+  border-radius:10px;
+  cursor:pointer;
+  transition: background .15s ease, border-color .15s ease, transform .06s ease;
+}
+.b:hover{ background:#f6f8fb; border-color:#c5ccda; }
+.b:active{ transform: translateY(1px); }
+
+/* Section-specific accents */
+.signed h2{ color:#0b3bdb; }         /* blue title */
+.contacted h2{ color:#0f766e; }      /* teal title */
+
+/* HR styling (for the one inside body) */
+hr{
+  border:0; height:1px; margin: 18px auto;
+  background: var(--border);
+  max-width:1100px;
+}
+
+/* ====== Responsive ====== */
+@media (min-width: 880px){
+  .signed, .contacted{
+    padding-left: 20px; padding-right: 20px;
+  }
+  .signed > [class^="contracted"],
+  .contacted > [class^="contacted"]{
+    grid-template-columns: 80px 1fr 160px;
+    padding: 18px 18px;
+  }
+}
+@media (min-width: 1024px){
+  /* arrange cards into two columns */
+  .signed, .contacted{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 16px;
+  }
+  .signed h2, .contacted h2{
+    grid-column: 1 / -1;
+  }
+  .signed > [class^="contracted"],
+  .contacted > [class^="contacted"]{
+    margin-bottom: 0; /* grid handles spacing */
+  }
+}
+
+/* ====== Nice micro-details ====== */
+strong{ font-weight:800; }
+a{ outline:none; }
+a:focus-visible{ box-shadow: 0 0 0 3px rgba(37,99,235,.25); border-radius:8px; }
