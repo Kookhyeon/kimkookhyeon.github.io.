@@ -1,28 +1,21 @@
-const costs = document.querySelectorAll(".cost");
-const items = document.querySelectorAll(".cost1");
+const costs1 = document.querySelectorAll(".cost1");
+const costs2 = document.querySelectorAll(".cost2");
 
-costs.forEach((cost)=> {
-    cost.addEventListener("click", ()=>{
-        const html = cost.innerHTML.replace(/\s+/g, "").replace("<br>", "<br/>");
-        if ( html === "cost:<br/>1M₩") {
-            cost.innerHTML= "39.2k";
-        } else if ( html ==="cost:<br/>1.7M₩") {
-            cost.innerHTML = "21.6k";
-        } else if ( html === "39.2k" ) {
-            cost.innerHTML = "cost:<br/>1M₩";
-        } else if ( html === "21.6k") {
-            cost.innerHTML = "cost:<br/>1.7M₩";
-        }
-        });
+costs1.forEach((el1) => {
+    const original1 = el1.innerHTML;
+    const alt1 = el1.dataset.alt;
 
-    });
+    el1.addEventListener("click", ()=> {
+        el1.innerHTML = (el1.innerHTML === original1) ? alt1 : original1;
+    })
+})
 
-items.forEach((el)=> {
-    const original = el.innerHTML;
-    const alt = el.dataset.alt;     
+costs2.forEach((el2)=> {
+    const original2 = el2.innerHTML;
+    const alt2 = el2.dataset.alt;     
     
-    el.addEventListener("click", ()=> {
+    el2.addEventListener("click", ()=> {
 
-        el.innerHTML = (el.innerHTML === original) ? alt : original;
+        el2.innerHTML = (el2.innerHTML === original2) ? alt2 : original2;
    });
  });
