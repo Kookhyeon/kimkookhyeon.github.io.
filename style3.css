@@ -155,11 +155,11 @@ hr{ display:none }
   justify-self:end;
   align-self:center;
   font:600 12px/1.1 "Intel One Mono",ui-monospace,Menlo,monospace;
-  padding:10px 12px 8px;
+  padding:5px 10px 5px;
   border-radius:12px;
   background:#f8fafc;
   border:1px dashed #cbd5e1;
-  min-width:88px;
+  min-width:70px;
   text-align:center;
   white-space:nowrap
 }
